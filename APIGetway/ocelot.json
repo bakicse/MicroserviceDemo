@@ -1,0 +1,34 @@
+// ApiGateway/ocelot.json
+{
+  "Routes": [
+    // Route for ServiceA
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7001 // ServiceA's port
+        }
+      ],
+      "UpstreamPathTemplate": "/serviceA/{url}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    // Route for ServiceB
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7002 // ServiceB's port
+        }
+      ],
+      "UpstreamPathTemplate": "/serviceB/{url}",
+      "UpstreamHttpMethod": [ "GET" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7003" // The gateway's port
+  }
+}

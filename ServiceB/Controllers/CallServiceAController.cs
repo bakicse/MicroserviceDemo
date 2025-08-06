@@ -14,7 +14,7 @@ public class CallServiceAController(IHttpClientFactory httpClientFactory) : Cont
 
         try
         {
-            var response = await httpClient.GetStringAsync("https://localhost:7283/Message");
+            var response = await httpClient.GetStringAsync("Message");
             return Ok($"Hello from ServiceB! ServiceA says: {response}");
         }
         catch (HttpRequestException ex)
